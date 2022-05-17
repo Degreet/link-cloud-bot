@@ -15,7 +15,7 @@ export const menuLayout: Layout = new Layout('menu', async (ctx: IMyContext): Pr
       keyboard = new Keyboard('under_the_message')
 
       links.forEach((link: LinkSchema): void => {
-        keyboard.btn('cb', link.linkName, `link_${link._id}`)
+        keyboard.btn('cb', link.linkName, `link_info_${link._id}`)
       })
 
       text = ctx.i18n?.get('menu_have_links', { count: links.length })

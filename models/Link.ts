@@ -4,6 +4,7 @@ const model: mongoose.Schema<LinkSchema> = new mongoose.Schema<LinkSchema>({
   userId: Number,
   link: String,
   linkName: String,
+  password: String,
   dateCreate: { type: Date, default: Date.now },
 })
 
@@ -12,6 +13,7 @@ export interface LinkSchema {
   userId: number
   link: string
   linkName: string
+  password?: string
   dateCreate?: number
   save: () => Promise<any>
 }
