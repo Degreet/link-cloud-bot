@@ -19,6 +19,7 @@ export const linkLayout: Layout = new Layout('link', async (ctx: IMyContext, _id
     const keyboard: Keyboard = new Keyboard('under_the_message')
       .btn('cb', ctx.i18n?.get('set_password_btn')!, `link_key_${_id}`)
       .btn('cb', ctx.i18n?.get('share_link_btn')!, `link_share_${_id}`).row()
+      .btn('cb', ctx.i18n?.get('remove_link_btn')!, `link_remove_${_id}`).row()
       .useLayout('menu_btn')
 
     try {

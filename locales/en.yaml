@@ -9,6 +9,7 @@ enter_link: >
   🔗 <b>Enter link</b>
 set_password_btn: 🔑 Set password
 share_link_btn: 🔗 Share link
+remove_link_btn: 🚚 Remove link
 link_info: |
   🔗 ${link}
 link_info_with_sharing: |

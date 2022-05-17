@@ -67,4 +67,16 @@ block.onClick(/link_share_(.*)/, async (ctx: IMyContext): Promise<any> => {
   }
 })
 
+block.onClick(/link_remove_(.*)/, async (ctx: IMyContext): Promise<any> => {
+  try {
+    let linkId: string = ctx.matchParams[1]
+    if (!linkId) return
+
+    await Link.deleteOne({ _id: linkId })
+    return ctx.callLayout('menu')
+  } catch (e: any) {
+    console.error(e)
+  }
+})
+
 export const controlLinkBlock = block
