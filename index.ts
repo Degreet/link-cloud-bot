@@ -8,11 +8,11 @@ import path from 'path'
 import { authMiddleware } from './middlewares/auth.middleware'
 import { menuLayout } from './layouts/menu.layout'
 import { addLinkScene } from './scenes/add-link.scene'
-import { addLinkBlock } from './blocks/add-link.block'
 import { linkLayout } from './layouts/link.layout'
 import { addKeyLinkScene } from './scenes/add-key-link.scene'
 import { controlLinkBlock } from './blocks/control-link.block'
 import { enterKeyLink } from './scenes/enter-key-link.scene'
+import { startBlock } from './blocks/start.block'
 
 const token: string = config.get<string>('botToken')
 const bot: DegreetTelegram<IMyContext> = new DegreetTelegram<IMyContext>(token)
@@ -40,14 +40,13 @@ void (async (): Promise<any> => {
     .saveLayout('menu_btn')
 
   // setup menu callers
-  bot.command('start', Layout.layoutCaller('menu'))
   bot.onClick('menu', Layout.layoutCaller('menu'))
 
   // setup layouts and blocks
   bot.use(menuLayout)
+  bot.use(startBlock)
   bot.use(linkLayout)
   bot.use(addLinkScene)
-  bot.use(addLinkBlock)
   bot.use(enterKeyLink)
   bot.use(addKeyLinkScene)
   bot.use(controlLinkBlock)

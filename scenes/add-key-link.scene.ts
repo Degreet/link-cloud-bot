@@ -29,6 +29,7 @@ const scene: StepScene = new StepScene(
       const link: LinkSchema | null | undefined = await Link.findOne({ _id: linkId })
       if (!link) return ctx.scene.leave()
 
+      link.shortId = 0
       link.password = await bcrypt.hash(linkPassword, 10)
       await link.save()
 

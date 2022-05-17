@@ -11,6 +11,11 @@ set_password_btn: 🔑 Set password
 share_link_btn: 🔗 Share link
 link_info: |
   🔗 ${link}
+link_info_with_sharing: |
+  🔗 ${link}
+
+  🌐 ${shareLink}
 menu_btn: 🏡 Go home
+my_links_btn: 🔗 My links
 enter_link_key: 🔑 <b>Enter link password</b>
 incorrect_password_err: 🔐 <b>Incorrect password</b>

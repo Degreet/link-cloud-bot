@@ -5,11 +5,13 @@ const model: mongoose.Schema<LinkSchema> = new mongoose.Schema<LinkSchema>({
   link: String,
   linkName: String,
   password: String,
+  shortId: Number,
   dateCreate: { type: Date, default: Date.now },
 })
 
 export interface LinkSchema {
   _id?: string
+  shortId?: number
   userId: number
   link: string
   linkName: string

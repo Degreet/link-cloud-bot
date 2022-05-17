@@ -1,8 +1,17 @@
-import { Block } from 'degreet-telegram'
+import { Block, I18n } from 'degreet-telegram'
 import { IMyContext } from '../core/types'
 import { Link, LinkSchema } from '../models/Link'
+import { genShortId } from '../core/share-link'
 
 const block: Block = new Block()
+
+block.on('text', I18n.listen('add_link_btn'), async (ctx: IMyContext): Promise<any> => {
+  try {
+    return ctx.scene.enter('add_link')
+  } catch (e: any) {
+    console.error(e)
+  }
+})
 
 block.onClick(/link_key_(.*)/, async (ctx: IMyContext): Promise<any> => {
   try {
@@ -35,6 +44,24 @@ block.onClick(/link_info_(.*)/, async (ctx: IMyContext): Promise<any> => {
     } else {
       return ctx.callLayout('link', linkId)
     }
+  } catch (e: any) {
+    console.error(e)
+  }
+})
+
+block.onClick(/link_share_(.*)/, async (ctx: IMyContext): Promise<any> => {
+  try {
+    let linkId: string = ctx.matchParams[1]
+    if (!linkId) return
+
+    const link: LinkSchema | null | undefined = await Link.findOne({ _id: linkId })
+    if (!link) return
+
+    link.password = ''
+    link.shortId = genShortId()
+    await link.save()
+
+    return ctx.callLayout('link', linkId)
   } catch (e: any) {
     console.error(e)
   }
