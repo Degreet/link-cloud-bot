@@ -1,0 +1,14 @@
+menu_havent_links: |
+  😞 <b>You have no links.</b> You can add it using button below 👇
+menu_have_links: |
+  🚀 You have <b>${count}</b> links. Control it using buttons below
+add_link_btn: 🔗 Add Link
+enter_link_name: >
+  🌐 <b>Enter link name</b>
+enter_link: >
+  🔗 <b>Enter link</b>
+set_password_btn: 🔑 Set password
+share_link_btn: 🔗 Share link
+link_info: |
+  🔗 ${link}
+menu_btn: 🏡 Go home
