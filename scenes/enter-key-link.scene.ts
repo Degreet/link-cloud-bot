@@ -32,6 +32,10 @@ const scene: StepScene = new StepScene(
       const compare: boolean = await bcrypt.compare(password, link.password)
       await ctx.scene.leave()
 
+      try {
+        await ctx.answer.delete()
+      } catch (e: any) {}
+
       if (compare) {
         return ctx.callLayout('link', linkId)
       } else {

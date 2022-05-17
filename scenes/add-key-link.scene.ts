@@ -33,6 +33,10 @@ const scene: StepScene = new StepScene(
       link.password = await bcrypt.hash(linkPassword, 10)
       await link.save()
 
+      try {
+        await ctx.answer.delete()
+      } catch (e: any) {}
+
       await ctx.scene.leave()
       return ctx.callLayout('menu')
     } catch (e: any) {
