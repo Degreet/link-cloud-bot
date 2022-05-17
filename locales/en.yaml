@@ -19,4 +19,8 @@ link_info_with_sharing: |
 menu_btn: 🏡 Go home
 my_links_btn: 🔗 My links
 enter_link_key: 🔑 <b>Enter link password</b>
+enter_global_key: 🔑 <b>Enter global password</b>
 incorrect_password_err: 🔐 <b>Incorrect password</b>
+set_global_key_btn: 🔑 Set global password
+enter_your_global_key: 🔑 <b>Enter your key</b> to enter menu
+end_session_btn: 🎬 End session

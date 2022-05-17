@@ -13,6 +13,7 @@ import { addKeyLinkScene } from './scenes/add-key-link.scene'
 import { controlLinkBlock } from './blocks/control-link.block'
 import { enterKeyLink } from './scenes/enter-key-link.scene'
 import { startBlock } from './blocks/start.block'
+import { setGlobalKeyScene } from './scenes/set-global-key.scene'
 
 const token: string = config.get<string>('botToken')
 const bot: DegreetTelegram<IMyContext> = new DegreetTelegram<IMyContext>(token)
@@ -50,6 +51,7 @@ void (async (): Promise<any> => {
   bot.use(enterKeyLink)
   bot.use(addKeyLinkScene)
   bot.use(controlLinkBlock)
+  bot.use(setGlobalKeyScene)
 })()
 
 bot.start().then((username: string): void => {

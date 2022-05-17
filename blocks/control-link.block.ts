@@ -1,13 +1,21 @@
-import { Block, I18n } from 'degreet-telegram'
+import { Block } from 'degreet-telegram'
 import { IMyContext } from '../core/types'
 import { Link, LinkSchema } from '../models/Link'
 import { genShortId } from '../core/share-link'
 
 const block: Block = new Block()
 
-block.on('text', I18n.listen('add_link_btn'), async (ctx: IMyContext): Promise<any> => {
+block.onClick('add_link', async (ctx: IMyContext): Promise<any> => {
   try {
     return ctx.scene.enter('add_link')
+  } catch (e: any) {
+    console.error(e)
+  }
+})
+
+block.onClick('end_session', async (ctx: IMyContext): Promise<any> => {
+  try {
+    return ctx.answer.edit(ctx.i18n?.get('enter_your_global_key'))
   } catch (e: any) {
     console.error(e)
   }

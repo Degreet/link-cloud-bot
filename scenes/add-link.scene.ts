@@ -6,7 +6,12 @@ const scene: StepScene = new StepScene(
   'add_link',
   async (ctx: IMyContext): Promise<any> => {
     try {
-      await ctx.answer.send(ctx.i18n?.get('enter_link_name'))
+      try {
+        await ctx.answer.edit(ctx.i18n?.get('enter_link_name'))
+      } catch {
+        await ctx.answer.send(ctx.i18n?.get('enter_link_name'))
+      }
+
       return ctx.scene.next()
     } catch (e: any) {
       console.error(e)

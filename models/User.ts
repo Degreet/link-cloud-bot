@@ -5,6 +5,7 @@ const model: mongoose.Schema<UserSchema> = new mongoose.Schema<UserSchema>({
   firstName: String,
   lastName: String,
   username: String,
+  password: String,
   lastPing: Date,
   dateReg: { type: Date, default: Date.now },
 })
@@ -15,6 +16,7 @@ export interface UserSchema {
   firstName: string
   lastName?: string
   username?: string
+  password?: string
   lastPing?: number
   dateReg?: number
   save: () => Promise<any>
