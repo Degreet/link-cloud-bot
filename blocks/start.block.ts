@@ -37,6 +37,10 @@ block.on('text', async (ctx: IMyContext): Promise<any> => {
     const compare: boolean = await bcrypt.compare(password, user.password)
     if (!compare) return ctx.answer.send(ctx.i18n?.get('incorrect_password_err'))
 
+    try {
+      await ctx.answer.delete()
+    } catch {}
+
     return ctx.callLayout('menu')
   } catch (e: any) {
     console.error(e)
