@@ -1,7 +1,10 @@
 import { Layout, Keyboard } from 'degreet-telegram'
-import { IMyContext } from '../core/types'
+
 import { Link, LinkSchema } from '../models/Link'
 import { getShareLink } from '../core/share-link'
+
+import { IPrivateChat } from 'degreet-telegram/src/types'
+import { IMyContext } from '../core/types'
 
 export const linkLayout: Layout = new Layout('link', async (ctx: IMyContext, _id: string): Promise<any> => {
   try {
@@ -11,10 +14,22 @@ export const linkLayout: Layout = new Layout('link', async (ctx: IMyContext, _id
     const link: LinkSchema | null | undefined = await Link.findOne({ _id })
     if (!link) return
 
-    const text: string | undefined = ctx.i18n?.get(
-      link.shortId ? 'link_info_with_sharing' : 'link_info',
-      { link: link.link, shareLink: getShareLink(link.shortId) }
-    )
+    let text: string | undefined
+
+    if (link.shortId) {
+      const info: IPrivateChat = await ctx.api.getMe()
+      const shareLink: string = getShareLink(info.username, link.shortId)
+
+      text = ctx.i18n?.get(
+        'link_info_with_sharing',
+        { link: link.link, shareLink }
+      )
+    } else {
+      text = ctx.i18n?.get(
+        'link_info',
+        { link: link.link }
+      )
+    }
 
     const keyboard: Keyboard = new Keyboard('under_the_message')
       .btn('cb', ctx.i18n?.get('set_password_btn')!, `link_key_${_id}`)

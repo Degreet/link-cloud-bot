@@ -352,10 +352,10 @@ defer-to-connect@^1.0.1:
   resolved "https://registry.yarnpkg.com/defer-to-connect/-/defer-to-connect-1.1.3.tgz#331ae050c08dcf789f8c83a7b81f0ed94f4ac591"
   integrity sha512-0ISdNousHvZT2EiFlZeZAHBUvSxmKswVCEf8hW7KWgG4a8MVEu/3Vb6uWYozkjylyCxe0JBIiRB1jV45S70WVQ==
 
-degreet-telegram@^2.7.4:
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/degreet-telegram/-/degreet-telegram-2.7.4.tgz#b5795e1d81b55ecff956830ed7790aafc9b8dd3f"
-  integrity sha512-abilvA2wCLNKUX2T7ujXeYsP8XCGqF7Lv0q13LNo3n63ty3co9DvQGh+YShHjDrb9Mv9mqhYgxgS/J7EIKAWmw==
+degreet-telegram@^2.7.6:
+  version "2.7.6"
+  resolved "https://registry.yarnpkg.com/degreet-telegram/-/degreet-telegram-2.7.6.tgz#06388f7a3a8c332c3ddeefe964c19cb0f31889a8"
+  integrity sha512-ZL7y+ZbkOE9wBnF5MTjYX2ID8qUK2CVf9vVLrjpnELosCxjYvAE8FBRUUYHRMz2ewvm30iv9+KG3ONPAn16Dxg==
   dependencies:
     axios "^0.27.2"
     config "^3.3.7"

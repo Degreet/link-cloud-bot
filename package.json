@@ -14,7 +14,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "config": "^3.3.7",
-    "degreet-telegram": "^2.7.4",
+    "degreet-telegram": "^2.7.6",
     "mongoose": "^6.3.3"
   },
   "devDependencies": {

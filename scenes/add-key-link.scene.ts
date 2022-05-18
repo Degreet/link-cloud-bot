@@ -23,7 +23,7 @@ const scene: StepScene = new StepScene(
       const linkPassword: string | undefined = ctx.msg.text
       if (!linkPassword) return ctx.scene.leave()
 
-      const linkId: string | undefined = ctx.session.linkId
+      const linkId: string | undefined = ctx.scene.params
       if (!linkId) return ctx.scene.leave()
 
       const link: LinkSchema | null | undefined = await Link.findOne({ _id: linkId })

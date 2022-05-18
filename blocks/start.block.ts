@@ -8,10 +8,13 @@ const block: Block = new Block()
 block.command('start', async (ctx: IMyContext): Promise<any> => {
   try {
     const user = ctx.props.user
-    if (!user || user.password) return
+    if (!user) return
 
-    let linkShortId: number = +ctx.params[0]
-    if (Number.isNaN(linkShortId)) return ctx.callLayout('menu')
+    const linkShortId: number = +ctx.params[0]
+    if (Number.isNaN(linkShortId)) {
+      if (user.password) return
+      return ctx.callLayout('menu')
+    }
 
     const link: LinkSchema | null | undefined = await Link.findOne({ shortId: linkShortId })
     if (!link) return
@@ -19,7 +22,7 @@ block.command('start', async (ctx: IMyContext): Promise<any> => {
     await ctx.answer.send(
       ctx.i18n?.get('link_info', { link: link.link }),
       new Keyboard('under_the_message')
-        .btn('cb', ctx.i18n?.get('my_links_btn')!, 'menu').row()
+        .btn('cb', ctx.i18n?.get('my_links_btn')!, 'menu', !!user.password).row()
     )
   } catch (e: any) {
     console.error(e)
